@@ -1,14 +1,51 @@
-/* iOS notch safe-area helpers */
-:root { --safe-top: env(safe-area-inset-top); }
-.pt-safe { padding-top: env(safe-area-inset-top); }
+/* styles/globals.css */
 
-/* Respect users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
+/* Tailwind core layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* App-wide base styling */
+:root {
+  /* You can tweak theme color here if you like */
+  --brand: #2563eb; /* tailwind blue-600 */
 }
 
-/* Smoother scrolling on iOS */
-html, body { -webkit-overflow-scrolling: touch; }
+/* Better typography + background defaults */
+html, body {
+  height: 100%;
+}
 
-/* Larger default tap target guidance (we already use generous padding) */
-a, button { -webkit-tap-highlight-color: transparent; }
+body {
+  @apply min-h-screen bg-gray-50 text-gray-900 antialiased;
+}
+
+/* Accessible focus style for links & buttons */
+a, button {
+  outline: none;
+}
+a:focus-visible, button:focus-visible {
+  @apply ring-2 ring-offset-2 ring-blue-500;
+}
+
+/* Smooth scrolling on iOS */
+html, body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility: safe-area padding for iOS notch when needed */
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
