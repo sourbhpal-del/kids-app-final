@@ -1,7 +1,11 @@
-export default function Navbar() {
+import Navbar from "../components/Navbar";
+
+export default function Home() {
   return (
-    <nav>
-      <a href="/">Home</a>
-    </nav>
+    <div>
+      <Navbar />
+      <h1>🎉 Kids Learning App</h1>
+    </div>
   );
 }
+
