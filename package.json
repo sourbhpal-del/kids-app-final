@@ -1,10 +1,14 @@
 {
+  "name": "kids-app-final",
+  "version": "1.0.0",
+  "private": true,
   "type": "module",
-  "dependencies": {
-    ...
-  }
-}
-{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
     "next": "14.2.3",
     "react": "18.2.0",
@@ -16,6 +20,5 @@
     "framer-motion": "^11.0.0"
   }
 }
-
 
 
