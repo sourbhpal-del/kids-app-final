@@ -1,48 +1,76 @@
 // components/Navbar.js
+import { useState } from "react";
+import Link from "next/link";
+
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <nav className="bg-blue-600 text-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between items-center py-3">
-          <a href="/" className="font-bold tracking-wide">
+    <nav className="bg-blue-600 text-white shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo / Brand */}
+          <Link href="/" className="font-bold text-lg tracking-wide">
             🚀 Kids Learning App
-          </a>
+          </Link>
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden p-2 rounded hover:bg-blue-500"
-            aria-label="Open Menu"
-            onClick={() => {
-              const m = document.getElementById("mobile-nav");
-              if (m) m.classList.toggle("hidden");
-            }}
-          >
-            ☰
-          </button>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex space-x-6 text-sm font-medium">
+            <Link href="/lessons" className="hover:underline">
+              📘 Lessons
+            </Link>
+            <Link href="/quiz" className="hover:underline">
+              📝 Quiz
+            </Link>
+            <Link href="/badges" className="hover:underline">
+              🏅 Badges
+            </Link>
+            <Link href="/games" className="hover:underline">
+              🎮 Games
+            </Link>
+            <Link href="/progress" className="hover:underline">
+              📊 Progress
+            </Link>
+            <Link href="/personality" className="hover:underline">
+              🧠 Personality Test
+            </Link>
+          </div>
 
-          {/* Desktop links */}
-          <ul className="hidden md:flex gap-4">
-            <li><a href="/" className="hover:underline">Home</a></li>
-            <li><a href="/lessons" className="hover:underline">Lessons</a></li>
-            <li><a href="/quiz" className="hover:underline">Quiz</a></li>
-            <li><a href="/badges" className="hover:underline">Badges</a></li>
-            <li><a href="/progress" className="hover:underline">Progress</a></li>
-            <li><a href="/leaderboard" className="hover:underline">Leaderboard</a></li>
-          </ul>
+          {/* Mobile Hamburger */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="p-2 rounded-md hover:bg-blue-500 focus:outline-none"
+            >
+              {menuOpen ? "✖" : "☰"}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div id="mobile-nav" className="md:hidden hidden border-t border-blue-500">
-        <ul className="px-4 py-2 space-y-2">
-          <li><a href="/" className="block py-1">Home</a></li>
-          <li><a href="/lessons" className="block py-1">Lessons</a></li>
-          <li><a href="/quiz" className="block py-1">Quiz</a></li>
-          <li><a href="/badges" className="block py-1">Badges</a></li>
-          <li><a href="/progress" className="block py-1">Progress</a></li>
-          <li><a href="/leaderboard" className="block py-1">Leaderboard</a></li>
-        </ul>
-      </div>
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-blue-700 px-4 pt-2 pb-4 space-y-2">
+          <Link href="/lessons" className="block hover:underline">
+            📘 Lessons
+          </Link>
+          <Link href="/quiz" className="block hover:underline">
+            📝 Quiz
+          </Link>
+          <Link href="/badges" className="block hover:underline">
+            🏅 Badges
+          </Link>
+          <Link href="/games" className="block hover:underline">
+            🎮 Games
+          </Link>
+          <Link href="/progress" className="block hover:underline">
+            📊 Progress
+          </Link>
+          <Link href="/personality" className="block hover:underline">
+            🧠 Personality Test
+          </Link>
+        </div>
+      )}
     </nav>
   );
 }
