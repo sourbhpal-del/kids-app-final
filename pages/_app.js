@@ -1,19 +1,12 @@
 // pages/_app.js
-import "@/styles/globals.css"; // Global styles (Tailwind + custom)
-import Navbar from "@/components/Navbar"; // Navigation bar
+import '../styles/globals.css';
+import Navbar from '../components/Navbar';
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   return (
     <>
-      {/* Navbar always on top */}
       <Navbar />
-
-      {/* Page content */}
-      <main className="max-w-6xl mx-auto px-4 py-6">
-        <Component {...pageProps} />
-      </main>
+      <Component {...pageProps} />
     </>
   );
 }
-
-export default MyApp;
