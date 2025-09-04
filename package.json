@@ -2,7 +2,6 @@
   "name": "kids-app-final",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -20,5 +19,6 @@
     "framer-motion": "^11.0.0"
   }
 }
+
 
 
