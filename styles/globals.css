@@ -1,9 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* iOS notch safe-area helpers */
+:root { --safe-top: env(safe-area-inset-top); }
+.pt-safe { padding-top: env(safe-area-inset-top); }
 
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
 }
+
+/* Smoother scrolling on iOS */
+html, body { -webkit-overflow-scrolling: touch; }
+
+/* Larger default tap target guidance (we already use generous padding) */
+a, button { -webkit-tap-highlight-color: transparent; }
