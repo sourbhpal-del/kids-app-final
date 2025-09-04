@@ -1,6 +1,7 @@
 // components/Navbar.js
 import { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,29 +49,37 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-blue-700 px-4 pt-2 pb-4 space-y-2">
-          <Link href="/lessons" className="block hover:underline">
-            📘 Lessons
-          </Link>
-          <Link href="/quiz" className="block hover:underline">
-            📝 Quiz
-          </Link>
-          <Link href="/badges" className="block hover:underline">
-            🏅 Badges
-          </Link>
-          <Link href="/games" className="block hover:underline">
-            🎮 Games
-          </Link>
-          <Link href="/progress" className="block hover:underline">
-            📊 Progress
-          </Link>
-          <Link href="/personality" className="block hover:underline">
-            🧠 Personality Test
-          </Link>
-        </div>
-      )}
+      {/* Animated Mobile Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden bg-blue-700 px-4 pt-2 pb-4 space-y-2 overflow-hidden"
+          >
+            <Link href="/lessons" className="block hover:underline">
+              📘 Lessons
+            </Link>
+            <Link href="/quiz" className="block hover:underline">
+              📝 Quiz
+            </Link>
+            <Link href="/badges" className="block hover:underline">
+              🏅 Badges
+            </Link>
+            <Link href="/games" className="block hover:underline">
+              🎮 Games
+            </Link>
+            <Link href="/progress" className="block hover:underline">
+              📊 Progress
+            </Link>
+            <Link href="/personality" className="block hover:underline">
+              🧠 Personality Test
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
